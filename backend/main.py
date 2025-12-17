@@ -25,6 +25,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def health_check():
+    return {"status": "ok", "message": "PDF Reader Backend is Running"}
+
 os.makedirs("uploads", exist_ok=True)
 os.makedirs("static", exist_ok=True)
 
