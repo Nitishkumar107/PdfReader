@@ -28,7 +28,7 @@ razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
 
 from db import db
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=os.getenv("OPENAI_PDFREADER_KEY"))
 
 async def extract_text_from_pdf(file_path: str) -> str:
     try:
