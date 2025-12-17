@@ -79,12 +79,17 @@ async def upload_file(file: UploadFile = File(...)):
             
     return {"text": text}
 
+from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Request
+
+# ... imports ...
+
 @app.post("/tts")
-async def tts(request: TTSRequest):
+async def tts(request: TTSRequest, raw_request: Request):
     try:
         result = await services.generate_tts(request.text, request.voice, request.rate, request.pitch)
+        base_url = str(raw_request.base_url).rstrip("/")
         return {
-            "audio_url": f"http://localhost:8000/{result['audio_file']}",
+            "audio_url": f"{base_url}/{result['audio_file']}",
             "marks": result['marks']
         }
     except Exception as e:

@@ -11,7 +11,7 @@ import SignOutConfirm from './components/ui/SignOutConfirm';
 import { Mic, Zap } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
-const API_URL = 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 function App() {
     // Load initial state from localStorage if available
